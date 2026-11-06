@@ -1,0 +1,23 @@
+{
+  "name": "Axiom PNL Card Generator",
+  "short_name": "Axiom PNL",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080b11",
+  "theme_color": "#080b11",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/pfp.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/pfp.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

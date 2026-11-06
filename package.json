@@ -1,0 +1,11 @@
+{
+  "name": "axiom-pnl-generator",
+  "version": "1.0.0",
+  "description": "Axiom PNL Card Generator",
+  "scripts": {
+    "start": "npx serve -l 3000",
+    "dev": "npx serve -l 3000",
+    "host": "npx http-server -p 3000 -a 0.0.0.0",
+    "deploy": "npx vercel"
+  }
+}

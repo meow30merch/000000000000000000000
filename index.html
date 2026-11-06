@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#080b11">
+    <meta name="color-scheme" content="dark">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Axiom PNL">
+    <meta name="format-detection" content="telephone=no">
+    <title>Axiom PNL Card Generator</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/pfp.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+    <!-- Background -->
+    <div class="background"></div>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel" id="controlsPanel">
+        <h2>
+            Axiom PNL
+            <span class="badge">generator</span>
+        </h2>
+
+        <div class="input-group">
+            <label for="investedAmount">Invested Amount ($)</label>
+            <input type="number" id="investedAmount" placeholder="100" value="100" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="currentPosition">Current Position ($)</label>
+            <input type="number" id="currentPosition" placeholder="150" value="150" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="usernameInput">Username</label>
+            <input type="text" id="usernameInput" placeholder="@username" value="@luckysta">
+        </div>
+
+        <div class="input-group">
+            <label for="coinNameInput">Coin Name</label>
+            <input type="text" id="coinNameInput" placeholder="COGE" value="COGE">
+            <div class="coin-pills" id="coinPills">
+                <span class="coin-pill active">COGE</span>
+                <span class="coin-pill">FLOAT</span>
+                <span class="coin-pill">SilkyBriefBear</span>
+                <span class="coin-pill">BoldDeafCrane</span>
+                <span class="coin-pill">VastLuckyVote</span>
+                <span class="coin-pill">MARSCOIN</span>
+                <span class="coin-pill">STONK</span>
+                <span class="coin-pill">KeenWarmTiger</span>
+                <span class="coin-pill">ProudPaleWolf</span>
+                <span class="coin-pill">FairQuickBull</span>
+                <span class="coin-pill">SwiftBraveFox</span>
+                <span class="coin-pill">GladWildHawk</span>
+                <span class="coin-pill">CalmWiseLion</span>
+                <span class="coin-pill">GRIFFAIN</span>
+                <span class="coin-pill">FARTCOIN</span>
+                <span class="coin-pill">GOAT</span>
+                <span class="coin-pill">PNUT</span>
+                <span class="coin-pill">CHILLGUY</span>
+                <span class="coin-pill">ACT</span>
+                <span class="coin-pill">MOODENG</span>
+                <span class="coin-pill">SPX</span>
+                <span class="coin-pill">AI16Z</span>
+                <span class="coin-pill">ZEREBRO</span>
+                <span class="coin-pill">SWARMS</span>
+                <span class="coin-pill">POPCAT</span>
+                <span class="coin-pill">BONK</span>
+                <span class="coin-pill">WIF</span>
+                <span class="coin-pill">PENGU</span>
+                <span class="coin-pill">TRUMP</span>
+                <span class="coin-pill">MELANIA</span>
+                <span class="coin-pill">FWOG</span>
+                <span class="coin-pill">RETARDIO</span>
+                <span class="coin-pill">GIGA</span>
+                <span class="coin-pill">MICHI</span>
+                <span class="coin-pill">BILLY</span>
+                <span class="coin-pill">SOL</span>
+                <span class="coin-pill">BTC</span>
+                <span class="coin-pill">ETH</span>
+                <span class="coin-pill">AXIOM</span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="profilePicInput">Profile Picture</label>
+            <input type="file" id="profilePicInput" accept="image/*">
+        </div>
+
+        <div class="input-group">
+            <label>Profile Border</label>
+            <div class="pfp-border-options" id="pfpBorderOptions">
+                <button type="button" class="border-pill active" data-border="cone">Cone</button>
+                <button type="button" class="border-pill" data-border="crown">Crown</button>
+                <button type="button" class="border-pill" data-border="diamond">Diamond</button>
+                <button type="button" class="border-pill" data-border="wings">Wings</button>
+                <button type="button" class="border-pill" data-border="tag">Tag</button>
+                <button type="button" class="border-pill" data-border="none">None</button>
+            </div>
+        </div>
+
+        <div class="calculated-values">
+            <div class="calc-item">
+                <span class="calc-label">Profit/Loss:</span>
+                <span class="calc-value profit" id="profitDisplay">+$50.00</span>
+            </div>
+            <div class="calc-item">
+                <span class="calc-label">Percentage:</span>
+                <span class="calc-value profit" id="percentageDisplay">+50.00%</span>
+            </div>
+        </div>
+
+        <button class="hide-ui-btn" id="hideUIBtn">
+            <span>Hide Controls</span>
+            <kbd>ESC</kbd>
+        </button>
+    </div>
+
+    <!-- Center Layout -->
+    <div class="center-layout">
+        <div class="card-scale-container" id="cardScaleContainer">
+            <!-- Card Wrapper -->
+            <div class="card-wrapper">
+            <!-- Ripple Effect -->
+            <div class="ripple-container" id="rippleContainer">
+                <div class="ripple-rect"></div>
+            </div>
+
+            <!-- Axiom PNL Card (840x570) -->
+            <div class="pnl-card" id="pnlCard">
+                <!-- Wallpaper Layer -->
+                <div class="card-wallpaper-layer" id="cardWallpaperLayer"></div>
+                <video class="card-video-layer" id="cardVideoLayer" loop playsinline webkit-playsinline muted autoplay preload="auto" style="display: none;"></video>
+                <div class="card-dark-scrim" id="cardDarkScrim"></div>
+
+                <!-- Native High-Res 1:1 Vector Overlay -->
+                <div class="card-content">
+                    <!-- Top Left: Axiom Pyramid Logo only -->
+                    <div class="top-left-logo">
+                        <svg class="axiom-logo-pyramid" width="54" height="54" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.1384 17.3876H11.8623L18.0001 7.00012L24.1384 17.3876Z"/>
+                            <path d="M31 29.0003L5 29.0003L9.96764 20.5933L26.0324 20.5933L31 29.0003Z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Top Right: AXIOM brand only -->
+                    <div class="top-right-brand">
+                        <span class="axiom-brand-main">AXIOM</span>
+                    </div>
+
+                    <!-- Coin Name -->
+                    <span id="coinNameDisplay" class="val-coin-name">COGE</span>
+
+                    <!-- PNL Main Number Box (Sharp 90-degree corners: x=34, y=176, w=386, h=75) -->
+                    <div class="progress-section" id="progressSection">
+                        <div class="pnl-number-container profit" id="pnlContainer">
+                            <span class="pnl-number-text" id="pnlText">+$50.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Table (Exact coords: x=56, y=301, 342, 383) -->
+                    <div class="stats-table">
+                        <div class="stat-row row-pnl">
+                            <span class="stat-label">PNL</span>
+                            <span id="percentageVal" class="stat-value val-percentage profit">+50.00%</span>
+                        </div>
+                        <div class="stat-row row-invested">
+                            <span class="stat-label">Invested</span>
+                            <span id="investedVal" class="stat-value val-invested">$100.00</span>
+                        </div>
+                        <div class="stat-row row-position">
+                            <span class="stat-label">Position</span>
+                            <span id="positionVal" class="stat-value val-position">$150.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Section (x=31, y=431..499) -->
+                    <div class="profile-section">
+                        <div class="pfp-container" id="pfpContainer">
+                            <div class="pfp-badge-crest" id="pfpBadgeCrest"></div>
+                            <div class="pfp-frame" id="pfpFrame">
+                                <img id="profilePicDisplay" class="profile-pic-display" src="assets/pfp.jpg" alt="Profile">
+                            </div>
+                        </div>
+                        <span class="user-handle" id="usernameDisplay">@luckysta</span>
+                    </div>
+
+                    <!-- Promo Footer (Exact coords: x=36, y=506) -->
+                    <div class="card-footer-promo">
+                        <span class="promo-text">Save 10% on fees&nbsp;&nbsp;</span>
+                        <svg class="promo-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                        <span class="promo-domain">axiom.trade</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Background Control Module -->
+        <div class="image-selector-module" id="imageSelectorModule">
+            <!-- Row 1: Mode Switcher -->
+            <div class="bg-mode-row">
+                <button type="button" class="bg-mode-btn active" id="btnTransparentBg">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="3 3"/>
+                    </svg>
+                    <span>Transparent</span>
+                </button>
+
+                <label class="bg-mode-btn" for="customMediaUpload" id="btnCustomMediaUpload">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <span>Upload MP4 / GIF / Image</span>
+                </label>
+                <input type="file" id="customMediaUpload" accept="video/*,image/*" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+
+                <!-- Volume Control & Slider -->
+                <div class="volume-control-wrapper" id="volumeControlWrapper">
+                    <button type="button" class="volume-mute-btn" id="soundToggleBtn" title="Mute/Unmute">
+                        <svg class="vol-icon-high" id="volIconHigh" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                        <svg class="vol-icon-low" id="volIconLow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                        <svg class="vol-icon-off" id="volIconOff" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <line x1="23" y1="9" x2="17" y2="15"/>
+                            <line x1="17" y1="9" x2="23" y2="15"/>
+                        </svg>
+                    </button>
+                    <div class="volume-slider-track">
+                        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="100" step="1" title="Volume slider">
+                    </div>
+                    <span class="volume-value-text" id="volumePercent">100%</span>
+                </div>
+
+                <button type="button" class="bg-clear-btn" id="clearBgBtn" style="display: none;" title="Reset to transparent">
+                    ✕ Reset
+                </button>
+            </div>
+
+            <!-- Row 2: TikTok / URL Input -->
+            <div class="tiktok-input-row">
+                <div class="tiktok-input-wrapper">
+                    <svg class="tiktok-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                    </svg>
+                    <input type="text" id="tiktokUrlInput" placeholder="Paste TikTok video link (or direct MP4 link)">
+                </div>
+                <button type="button" class="tiktok-load-btn" id="loadTiktokBtn">Load TikTok</button>
+            </div>
+            <div class="tiktok-status-msg" id="tiktokStatus"></div>
+
+            <!-- Row 3: Actions -->
+            <div class="selector-bottom-row">
+                <div class="action-buttons">
+                    <button class="action-btn video-btn" id="downloadMp4Btn" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                        </svg>
+                        Download MP4
+                    </button>
+                    <button class="action-btn primary" id="downloadBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7,10 12,15 17,10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download PNG
+                    </button>
+                    <button class="action-btn" id="copyBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI unhide pill -->
+    <div class="unhide-hint" id="unhideHint">
+        <span>Press <kbd>ESC</kbd> or click here to restore UI</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="theme-data.js"></script>
+    <script src="script.js?v=8"></script>
+</body>
+</html>
