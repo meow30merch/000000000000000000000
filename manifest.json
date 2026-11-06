@@ -8,13 +8,13 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "assets/pfp.jpg",
+      "src": "pfp.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/pfp.jpg",
+      "src": "pfp.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
